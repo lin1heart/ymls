@@ -1,0 +1,21 @@
+
+version: "3.2"
+
+# networks:
+#   mnetwork:
+#     name: mnetwork
+#     external: true
+
+services:
+
+  yellow_page:
+    image: "amanohikaru/yellow_page"
+
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 10180:10180
+    volumes:
+      - /home/yellow_page:/home/yellow_page
+    # networks:
+    #   - mnetwork
