@@ -1,4 +1,9 @@
-version: '3.1'
+version: '3.2'
+
+
+networks:
+  n1:
+    external: true
 
 services:
 
@@ -11,3 +16,5 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ~/mysqlvolume:/var/lib/mysql
+    networks:
+      - n1

@@ -1,10 +1,9 @@
 
 version: "3.2"
 
-# networks:
-#   mnetwork:
-#     name: mnetwork
-#     external: true
+networks:
+  n1:
+    external: true
 
 services:
 
@@ -17,5 +16,6 @@ services:
       - 10180:10180
     volumes:
       - /home/yellow_page:/home/yellow_page
-    # networks:
-    #   - mnetwork
+    networks:
+      - n1
+
