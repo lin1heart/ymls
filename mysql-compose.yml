@@ -15,6 +15,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - ~/mysqlvolume:/var/lib/mysql
+      - /root/mysqlvolume:/var/lib/mysql
     networks:
       - n1
+    deploy:
+      placement:
+        constraints:
+          - node.labels.k1 == v1

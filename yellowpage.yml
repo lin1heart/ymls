@@ -18,4 +18,7 @@ services:
       - /home/yellow_page:/home/yellow_page
     networks:
       - n1
-
+    deploy:
+      placement:
+        constraints:
+          - node.labels.k2 == v2
