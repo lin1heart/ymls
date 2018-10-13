@@ -1,0 +1,74 @@
+################################################################
+# Global configuration
+################################################################
+
+# Enable debug mode
+#
+# Optional
+# Default: false
+#
+# debug = true
+
+# Log level
+#
+# Optional
+# Default: "ERROR"
+#
+logLevel = "DEBUG"
+
+
+# [traefikLog]
+#   filePath = "/var/log/traefik.log"
+#   format   = "json"
+
+[accessLog]
+
+
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":8000"
+# Enable API and dashboard
+[api]
+
+  # Name of the related entry point
+  #
+  # Optional
+  # Default: "traefik"
+  #
+  # entryPoint = "traefik"
+
+  # Enabled Dashboard
+  #
+  # Optional
+  # Default: true
+  #
+dashboard = true
+
+
+################################################################
+# Docker Swarm Mode Provider
+################################################################
+
+# Enable Docker Provider.
+[docker]
+
+endpoint = "unix:///var/run/docker.sock"
+watch = true
+
+swarmMode = true
+
+network = "n1"
+
+exposedByDefault = false
+# domain = "fe2o3.club"
+
+
+# [acme]
+# email = "1060996790@qq.com"
+# storage = "acme.json"
+# entryPoint = "https"
+# onHostRule = true
+# [acme.httpChallenge]
+# entryPoint = "http"

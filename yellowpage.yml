@@ -22,3 +22,8 @@ services:
       placement:
         constraints:
           - node.labels.k2 == v2
+      labels:
+        - "traefik.port=9080"
+        - "traefik.enable=true"
+        - "traefik.docker.network=n1"
+        - "traefik.frontend.rule=PathPrefixStrip:/lin"     

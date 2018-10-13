@@ -1,27 +1,32 @@
 version: '3.7'
 
+
 networks:
   n1:
     external: true
 
 services:
-
-  dogsnet:
-    image: amanohikaru/dogsnet
+  swTest:
+    image: amanohikaru/swtest
     # ports:
-    #   - 3080:80
     #   - target: 80
     #     published: 80
     #     protocol: tcp
     #     mode: host
+    # volumes:
+    #   - /etc/timezone:/etc/timezone:ro
+    #   - /etc/localtime:/etc/localtime:ro
+
+    deploy:
+
     networks:
       - n1
     deploy:
       placement:
-        constraints:
-          - node.labels.k1 == v1
+        constraints: [node.role == manager]
       labels:
         - "traefik.port=80"
         - "traefik.enable=true"
         - "traefik.docker.network=n1"
-        - "traefik.frontend.rule=PathPrefixStrip:/dogs/"     
+        - "traefik.frontend.rule=PathPrefixStrip:/test/"     
+        - traefik.default.protocol=http
