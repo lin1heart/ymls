@@ -12,8 +12,8 @@ services:
 
     environment:
       TZ: Asia/Shanghai
-    ports:
-      - 10180:10180
+    # ports:
+    #   - 10180:10180
     volumes:
       - /home/yellow_page:/home/yellow_page
     networks:
@@ -23,7 +23,7 @@ services:
         constraints:
           - node.labels.k2 == v2
       labels:
-        - "traefik.port=9080"
+        - "traefik.port=10180"
         - "traefik.enable=true"
         - "traefik.docker.network=n1"
-        - "traefik.frontend.rule=PathPrefixStrip:/lin"     
+        - "traefik.frontend.rule=PathPrefixStrip:/lin/"     

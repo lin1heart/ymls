@@ -17,9 +17,9 @@
 logLevel = "DEBUG"
 
 
-# [traefikLog]
-#   filePath = "/var/log/traefik.log"
-#   format   = "json"
+[traefikLog]
+  filePath = "/var/log/traefik.log"
+  format   = "json"
 
 [accessLog]
 
@@ -59,7 +59,7 @@ watch = true
 
 swarmMode = true
 
-network = "n1"
+network = "n2"
 
 exposedByDefault = false
 # domain = "fe2o3.club"

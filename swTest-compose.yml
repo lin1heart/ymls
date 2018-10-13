@@ -17,13 +17,13 @@ services:
     #   - /etc/timezone:/etc/timezone:ro
     #   - /etc/localtime:/etc/localtime:ro
 
-    deploy:
-
     networks:
       - n1
+
     deploy:
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.labels.k2 == v2
       labels:
         - "traefik.port=80"
         - "traefik.enable=true"

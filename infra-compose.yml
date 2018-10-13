@@ -1,10 +1,12 @@
-version: '3.2'
+version: '3.5'
 
 
 networks:
-  n1:
-    external: true
-
+  swarm_overlay:
+    name: n1
+    driver: overlay
+    attachable: true
+    
 services:
 
   mysql:
@@ -17,7 +19,7 @@ services:
     volumes:
       - /root/mysqlvolume:/var/lib/mysql
     networks:
-      - n1
+      - swarm_overlay
     deploy:
       placement:
         constraints:
