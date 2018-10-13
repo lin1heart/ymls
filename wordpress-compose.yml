@@ -19,3 +19,6 @@ services:
       WORDPRESS_DB_HOST: 39.104.226.149:3307
     networks:
       - n1
+    deploy:
+      placement:
+        constraints: [node.role == manager]
