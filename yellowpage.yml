@@ -7,23 +7,24 @@ networks:
 
 services:
 
-  yellow_page:
-    image: "amanohikaru/yellow_page"
+  gallery-service:
+    image: "amanohikaru/gallery-service"
 
-    environment:
-      TZ: Asia/Shanghai
     # ports:
     #   - 10180:10180
     volumes:
       - /home/yellow_page:/home/yellow_page
     networks:
       - n1
+    environment:
+      TEST: testdockercompose
+      MYSQL_URL: jdbc:mysql://39.104.226.149:3307/yellow_page?useUnicode=true&amp;characterEncoding=UTF-8
     deploy:
       placement:
         constraints:
           - node.labels.k2 == v2
       labels:
-        - "traefik.port=10180"
+        - "traefik.port=8080"
         - "traefik.enable=true"
         - "traefik.docker.network=n1"
-        - "traefik.frontend.rule=PathPrefixStrip:/lin/"     
+        - "traefik.frontend.rule=PathPrefixStrip:/gallery/"     
