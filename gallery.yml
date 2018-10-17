@@ -28,3 +28,4 @@ services:
         - "traefik.enable=true"
         - "traefik.docker.network=n1"
         - "traefik.frontend.rule=PathPrefixStrip:/gallery/"     
+        - traefik.frontend.entryPoints=http,https

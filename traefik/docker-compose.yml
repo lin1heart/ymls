@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.3"
 
 networks:
   n1:
@@ -26,19 +26,27 @@ services:
         protocol: tcp
         mode: host
       - target: 443
-        published: 9443
+        published: 8443
         protocol: tcp
         mode: host
       - 8001:8080
     configs:
       - source: my_config
         target: /etc/traefik/traefik.toml
+      - source: fe2.crt
+        target: /etc/traefik/fe2.crt
+      - source: fe2.key
+        target: /etc/traefik/fe2.key
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
 configs:
   my_config:
     file: ./traefik.toml
+  fe2.crt:
+    file: ./www.fe2o3.club.crt
+  fe2.key:
+    file: ./www.fe2o3.club.key
 
   # my_other_config:
   #   external: true

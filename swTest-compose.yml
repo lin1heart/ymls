@@ -28,5 +28,5 @@ services:
         - "traefik.port=80"
         - "traefik.enable=true"
         - "traefik.docker.network=n1"
-        - "traefik.frontend.rule=PathPrefixStrip:/test/"     
-        - traefik.default.protocol=http
+        - "traefik.frontend.rule=PathPrefixStrip:/test/"
+        - traefik.frontend.entryPoints=http,https

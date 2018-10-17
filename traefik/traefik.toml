@@ -14,21 +14,30 @@
 # Optional
 # Default: "ERROR"
 #
-logLevel = "DEBUG"
+logLevel = "INFO"
 
 
-[traefikLog]
-  filePath = "/var/log/traefik.log"
-  format   = "json"
+# [traefikLog]
+#   filePath = "/var/log/traefik.log"
+#   format   = "json"
 
 [accessLog]
 
 
-defaultEntryPoints = ["http"]
+defaultEntryPoints = ["https","http"]
 
 [entryPoints]
   [entryPoints.http]
   address = ":8000"
+      [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      certFile = "/etc/traefik/fe2.crt"
+      keyFile = "/etc/traefik/fe2.key"
+
 # Enable API and dashboard
 [api]
 

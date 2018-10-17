@@ -25,3 +25,4 @@ services:
         - "traefik.enable=true"
         - "traefik.docker.network=n1"
         - "traefik.frontend.rule=PathPrefixStrip:/dogs/"     
+        - traefik.frontend.entryPoints=http,https
