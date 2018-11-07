@@ -21,6 +21,7 @@ services:
         - traefik.frontend.entryPoints=http,https
     environment:
       # see https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables
+      url: http://fe2o3.club:8000
       database__client: mysql
       database__connection__host: 39.104.226.149
       database__connection__port: 3307
