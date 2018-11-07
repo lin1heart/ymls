@@ -21,9 +21,13 @@ services:
       - n1
 
     deploy:
-      placement:
-        constraints:
-          - node.labels.k2 == v2
+      replicas: 1
+      update_config:
+        parallelism: 1
+        order: start-first
+      # placement:
+      #   constraints:
+      #     - node.labels.k2 == v2
       labels:
         - "traefik.port=80"
         - "traefik.enable=true"

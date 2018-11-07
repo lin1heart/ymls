@@ -26,7 +26,7 @@ services:
         protocol: tcp
         mode: host
       - target: 443
-        published: 8443
+        published: 4443
         protocol: tcp
         mode: host
       - 8001:8080

@@ -1,0 +1,29 @@
+version: '3.5'
+
+networks:
+  n1:
+    external: true
+
+services:
+
+  ghost:
+    image: ghost:1-alpine
+    # ports:
+    #   - 8080:2368
+    networks:
+      - n1
+    deploy:
+      labels:
+        - "traefik.port=2368"
+        - "traefik.enable=true"
+        - "traefik.docker.network=n1"
+        - "traefik.frontend.rule=PathPrefixStrip:/"     
+        - traefik.frontend.entryPoints=http,https
+    environment:
+      # see https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables
+      database__client: mysql
+      database__connection__host: 39.104.226.149
+      database__connection__port: 3307
+      database__connection__user: root
+      database__connection__password: root
+      database__connection__database: ghost

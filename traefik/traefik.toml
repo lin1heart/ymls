@@ -14,7 +14,7 @@
 # Optional
 # Default: "ERROR"
 #
-logLevel = "INFO"
+# logLevel = "INFO"
 
 
 # [traefikLog]
@@ -29,10 +29,10 @@ defaultEntryPoints = ["https","http"]
 [entryPoints]
   [entryPoints.http]
   address = ":8000"
-      [entryPoints.http.redirect]
-    entryPoint = "https"
+    #   [entryPoints.http.redirect]
+    # entryPoint = "https"
   [entryPoints.https]
-  address = ":443"
+  address = ":8443"
     [entryPoints.https.tls]
       [[entryPoints.https.tls.certificates]]
       certFile = "/etc/traefik/fe2.crt"
