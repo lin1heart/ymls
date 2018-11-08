@@ -12,6 +12,8 @@ services:
     #   - 8080:2368
     networks:
       - n1
+    volumes:
+      - /root/ghost/content:/var/lib/ghost/content
     deploy:
       labels:
         - "traefik.port=2368"
