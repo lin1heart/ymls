@@ -28,11 +28,11 @@ defaultEntryPoints = ["https","http"]
 
 [entryPoints]
   [entryPoints.http]
-  address = ":8000"
+  address = ":80"
     #   [entryPoints.http.redirect]
     # entryPoint = "https"
   [entryPoints.https]
-  address = ":8443"
+  address = ":443"
     [entryPoints.https.tls]
       [[entryPoints.https.tls.certificates]]
       certFile = "/etc/traefik/fe2.crt"
