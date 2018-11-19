@@ -1,0 +1,39 @@
+
+version: "3.5"
+
+networks:
+  n1:
+    external: true
+
+services:
+
+  customer:
+    image: "amanohikaru/player-customer"
+    # volumes:
+    #   - /home/yellow_page:/home/yellow_page
+    networks:
+      - n1
+    # environment:
+    #   TEST: testdockercompose
+    #   MYSQL_URL: jdbc:mysql://39.104.226.149:3307/yellow_page?useUnicode=true&amp;characterEncoding=UTF-8
+    deploy:
+      replicas: 1
+      labels:
+        - traefik.port=8080
+        - traefik.enable=true
+        - traefik.docker.network=n1
+        - traefik.frontend.rule=PathPrefixStrip:/player/customer/     
+        - traefik.frontend.entryPoints=http,https
+
+  comment:
+    image: "amanohikaru/player-comment"
+    networks:
+      - n1
+    deploy:
+      replicas: 1
+      labels:
+        - traefik.port=8888
+        - traefik.enable=true
+        - traefik.docker.network=n1
+        - traefik.frontend.rule=PathPrefixStrip:/player/comment/     
+        - traefik.frontend.entryPoints=http,https
