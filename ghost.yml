@@ -7,7 +7,7 @@ networks:
 services:
 
   ghost:
-    image: ghost:1-alpine
+    image: ghost
     # ports:
     #   - 8080:2368
     networks:
@@ -15,6 +15,9 @@ services:
     volumes:
       - /root/ghost/content:/var/lib/ghost/content
     deploy:
+      placement:
+        constraints:
+          - node.labels.k2 == v2
       labels:
         - "traefik.port=2368"
         - "traefik.enable=true"
@@ -23,7 +26,7 @@ services:
         - traefik.frontend.entryPoints=http,https
     environment:
       # see https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables
-      url: http://fe2o3.club:8000
+      url: http://fe2o3.club
       database__client: mysql
       database__connection__host: 39.104.226.149
       database__connection__port: 3307
