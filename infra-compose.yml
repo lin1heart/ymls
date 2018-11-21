@@ -13,7 +13,10 @@ services:
     image: mysql:5.7
  #   restart: always
     ports:
-      - 3307:3306
+      - target: 3306
+        published: 3306
+        protocol: tcp
+        mode: host
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
