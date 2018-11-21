@@ -10,15 +10,13 @@ services:
   gallery-service:
     image: "amanohikaru/gallery-service"
 
-    # ports:
-    #   - 10180:10180
     volumes:
       - /home/yellow_page:/home/yellow_page
     networks:
       - n1
     environment:
       TEST: testdockercompose
-      MYSQL_URL: jdbc:mysql://39.104.226.149:3307/yellow_page?useUnicode=true&amp;characterEncoding=UTF-8
+      MYSQL_URL: jdbc:mysql://39.104.226.149:3306/yellow_page?useUnicode=true&amp;characterEncoding=UTF-8
     deploy:
       placement:
         constraints:

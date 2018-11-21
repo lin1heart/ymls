@@ -29,7 +29,7 @@ services:
       url: https://fe2o3.club
       database__client: mysql
       database__connection__host: 39.104.226.149
-      database__connection__port: 3307
+      database__connection__port: 3306
       database__connection__user: root
       database__connection__password: root
       database__connection__database: ghost
