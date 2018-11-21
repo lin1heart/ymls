@@ -13,9 +13,11 @@ services:
     #   - /home/yellow_page:/home/yellow_page
     networks:
       - n1
-    # environment:
-    #   TEST: testdockercompose
-    #   MYSQL_URL: jdbc:mysql://39.104.226.149:3307/yellow_page?useUnicode=true&amp;characterEncoding=UTF-8
+    environment:
+      TEST: testdockercompose
+      MYSQL_URL: jdbc:mysql://39.104.226.149:3306/player?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT
+      MYSQL_USER: root
+      MYSQL_PASS: root
     deploy:
       replicas: 1
       labels:
@@ -29,6 +31,10 @@ services:
     image: "amanohikaru/player-comment"
     networks:
       - n1
+    environment:
+      MYSQL_URL: jdbc:mysql://39.104.226.149:3306/player?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT
+      MYSQL_USER: root
+      MYSQL_PASS: root
     deploy:
       replicas: 1
       labels:
